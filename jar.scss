@@ -1,0 +1,74 @@
+.wrap {
+  perspective: 800px;
+  perspective-origin: top;
+  height: 70%;
+  // transform: rotateZ(20deg);
+}
+
+.red-wrap {
+  position: relative;
+  margin: 0 auto;
+  top: 40%;
+  width: 30px;
+  height: 335px;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  animation: rotate 20s infinite linear;
+}
+
+$total: 40;
+$deg: 360 / $total;
+$imageWidth: 1920;
+$imageHeight: 817;
+$sideWidth: 22.5;
+.side {
+  position: absolute;
+  height: 225 + px;
+  width: $sideWidth + px;
+  border-top: 30px solid #393939;
+  border-bottom: 10px solid #ddd;
+
+  background: url("assets/label4.png") #bbb;
+  background-size: cover;
+  // animation: color 20s infinite linear;
+}
+.jar-lid {
+  height: 237px;
+  width: 237px;
+  border-radius: 100%;
+  border: 20px solid #303030;
+  background: url("assets/logos/SV_horizontal_blue.png") black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transform: rotateX(90deg) translateZ(136px) translateX(-127px);
+}
+
+@for $i from 1 through $total {
+  .side:nth-child(#{$i}) {
+    transform: rotateY($i * $deg + deg) translateZ(140px);
+    background-position: $imageWidth - ($i * $sideWidth) + px 0;
+    // animation-delay: 0.5 * $i + s;
+  }
+}
+
+// @keyframes color {
+//   0% {
+//     background-color: #000;
+//   }
+//   50% {
+//     background-color: #fff;
+//   }
+//   100% {
+//     background-color: #000;
+//   }
+// }
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
